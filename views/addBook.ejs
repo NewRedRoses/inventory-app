@@ -8,5 +8,33 @@
 <body>
     <h1>Add a book</h1>
     <p>Fill in the form below to add a book</p>
+    <form action="/add" method="post">
+        <label>
+            Title:
+            <input type="text" name="title" placeholder="Dune">
+        </label>
+        <label>
+            Author:
+            <input type="text" name="author" placeholder="Frank Herbert">
+        </label>
+        <label>
+             Date Published:
+            <input type="date" name="date_published">
+        </label>
+        <label>
+             Publisher:
+            <input type="text" name="publisher" placeholder="1st">
+        </label>
+        <label>
+             Edition:
+            <input type="text" name="edition" placeholder="1st">
+        </label>
+        <!-- could be nice to see about make this be a selection? -->
+        <label>
+             Genre:
+            <input type="text" name="genre" placeholder="Adventure">
+        </label>
+        <button type="submit">Add book!</button>
+    </form>
 </body>
 </html>
