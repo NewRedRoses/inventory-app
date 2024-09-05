@@ -5,6 +5,11 @@ async function indexRouterGet(req, res) {
   res.render("index", { books: books });
 }
 
+function addBookRouterGet(req, res) {
+  res.render("addBook");
+}
+
 module.exports = {
   indexRouterGet,
+  addBookRouterGet,
 };
