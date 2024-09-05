@@ -8,8 +8,12 @@
   <body>
     <h1>Welcome to my book management app!</h1>
     <p>
-      Here you can deal with all sorts of books such as adding or even deleting
-      them!
+      Here's a list of all the books we currently have in our database:
     </p>
+    <ul>
+      <% books.forEach((book) => { %>
+          <li> <%= book.title %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>
