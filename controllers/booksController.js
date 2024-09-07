@@ -8,8 +8,12 @@ async function indexRouterGet(req, res) {
 function addBookRouterGet(req, res) {
   res.render("addBook");
 }
-
+async function addBookRouterPost(req, res) {
+  await db.addBookToDB(req.body);
+  res.redirect("/");
+}
 module.exports = {
   indexRouterGet,
   addBookRouterGet,
+  addBookRouterPost,
 };
