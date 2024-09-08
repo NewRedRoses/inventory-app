@@ -29,7 +29,21 @@ async function addBookToDB(book) {
 
   await pool.query(bookTableQuery, bookTableValues);
 }
+
+async function getAllCategories() {
+  let genres = [];
+
+  const text = "SELECT DISTINCT genre from books";
+  const { rows } = await pool.query(text);
+
+  for (const row of rows) {
+    if (row != "" || row != null) genres.push(row.genre);
+  }
+
+  return genres;
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
+  getAllCategories,
 };
