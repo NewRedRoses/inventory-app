@@ -14,6 +14,9 @@ app.use("/", indexRouter);
 const addBookRouter = require("./routes/addBookRouter");
 app.use("/add", addBookRouter);
 
+const categoriesRouter = require("./routes/categoriesRouter");
+app.use("/categories", categoriesRouter);
+
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`);
 });
