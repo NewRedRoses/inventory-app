@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search books</title>
+</head>
+<body>
+    <h1>Search books</h1>
+    <form action="/search" method="GET">
+        <input type="text" name="search_query" placeholder="Book name or title">
+        <button type="submit">Search</button>
+    </form>
+    <% if (searched_query) { %> 
+        Searching for "<strong><%- searched_query%></strong>"</p> 
+    <% }   %>
+
+</body>
+</html>
