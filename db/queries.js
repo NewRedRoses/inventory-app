@@ -9,19 +9,19 @@ async function addBookToDB(book) {
     title,
     first_name,
     last_name,
-    date_published,
+    year_published,
     publisher,
     edition,
     genre,
   } = book;
 
   const bookTableQuery =
-    "INSERT INTO books (title,genre, publisher, date_published, edition, author_first_name, author_last_name) VALUES ($1,$2,$3,$4,$5,$6,$7)";
+    "INSERT INTO books (title,genre, publisher, year_published, edition, author_first_name, author_last_name) VALUES ($1,$2,$3,$4,$5,$6,$7)";
   const bookTableValues = [
     title,
-    genre,
+    genre.replaceAll(" ", ""),
     publisher,
-    date_published,
+    year_published,
     edition,
     first_name,
     last_name,
@@ -31,19 +31,28 @@ async function addBookToDB(book) {
 }
 
 async function getAllCategories() {
-  let genres = [];
-
   const text = "SELECT DISTINCT genre from books";
   const { rows } = await pool.query(text);
-
-  for (const row of rows) {
-    if (row != "" || row != null) genres.push(row.genre);
-  }
-
-  return genres;
+  return rows;
 }
+
+async function getBooksMatchingGenre(genre) {
+  const query = "SELECT * FROM books WHERE genre =  $1";
+  const values = [genre];
+  const { rows } = await pool.query(query, values);
+  return rows;
+}
+async function getBooksMatchingTitle(search_term) {
+  const query = `SELECT * from books WHERE LOWER(title) LIKE LOWER('%' ||$1|| '%')`;
+  const values = [search_term];
+  const { rows } = await pool.query(query, values);
+  return rows;
+}
+
 module.exports = {
   getAllBooks,
   addBookToDB,
   getAllCategories,
+  getBooksMatchingGenre,
+  getBooksMatchingTitle,
 };

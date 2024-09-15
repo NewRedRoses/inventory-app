@@ -8,11 +8,26 @@
 <body>
     <h1>All categories</h1>
             <%- include("./partials/returnHomeBtn.ejs") %>
-    <p>List of all the book genres</p>
+    <h2>All book genres</h2>
     <ul>
-        <% genres.forEach((genre) =>{ %>
-            <li><a href="/"><%= genre %></a> </li>
+        <% genres.forEach((item) =>{ %>
+            <li>
+                 <button>
+                    <a href=<%=`/categories/?genre=${item.genre}`%>>
+                        <%= item.genre %>
+                    </a>
+                </button>
+             </li>
         <%})%>
     </ul>
+    <div class="divider"></div>
+    <% if (searchedGenre) { %> 
+        <ul>
+        <% genreRows.map((row) => { %>
+                <li> <%- row.title %></li>
+         <% }) %>
+         </ul>
+    <%}%>
+
 </body>
 </html>
