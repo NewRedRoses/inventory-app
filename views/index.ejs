@@ -22,10 +22,6 @@
     <p>
       Here's a list of all the books we currently have in our database:
     </p>
-    <ul>
-      <% books.forEach((book) => { %>
-          <li> <%= book.title %> by <%= book.author_first_name + " " + book.author_last_name%> </li>
-      <% }) %>
-    </ul>
+    <%- include("./partials/renderListOfBooks.ejs", {listOfBooks: books}) %>
   </body>
 </html>

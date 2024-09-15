@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
     <title>Search books</title>
 </head>
 <body>
@@ -13,11 +14,8 @@
         <button type="submit">Search</button>
     </form>
     <% if (searched_query) { %> 
-        Searching for "<strong><%- searched_query%></strong>"</p> 
-        <ul>
-        <% listOfBooks.map((book) => { %>
-            <li><%= book.title%> </li>
-    <%  }) %>
+        <span>Searching for "<strong><%=searched_query%></strong>" with <%- listOfBooks.length %> result(s)</span> 
+                    <%- include("./partials/renderListOfBooks.ejs", {listOfBooks: listOfBooks}) %>
     <% }   %>
         </ul>
 
