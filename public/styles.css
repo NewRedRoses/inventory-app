@@ -1,5 +1,7 @@
 :root {
   font-family: Helvetica;
+  color: #2f3640;
+  background-color: #f5f6fa;
 }
 body {
   display: flex;
@@ -8,4 +10,42 @@ body {
 }
 h1 {
   font-weight: 900;
+}
+.add-book-container {
+  display: flex;
+  flex-direction: column;
+}
+.genres-container {
+  list-style-type: none; /* Remove bullets */
+  display: flex;
+  gap: 10px;
+}
+.divider::after {
+  content: "";
+  display: block;
+  border-top: 1px solid #2f3640;
+  margin: 20px 0;
+}
+.book-list-container {
+  list-style-type: none; /* Remove bullets */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.book-list-item {
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 1px solid #dcdde1;
+}
+.book-list-item:hover {
+  border-bottom: 1px solid #2f3640;
+  cursor: pointer;
+  text-decoration: line-through 2px #2f3640;
+}
+.book-list-item:active {
+  top: 1px;
+}
+.book-title {
+  font-weight: bold;
+  width: 5ch;
 }
