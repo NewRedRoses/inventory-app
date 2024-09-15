@@ -6,7 +6,7 @@ async function indexRouterGet(req, res) {
 }
 
 function addBookRouterGet(req, res) {
-  res.render("addBook");
+  res.render("addBookPage");
 }
 async function addBookRouterPost(req, res) {
   await db.addBookToDB(req.body);
