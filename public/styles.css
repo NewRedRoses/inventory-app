@@ -1,0 +1,11 @@
+:root {
+  font-family: Helvetica;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-weight: 900;
+}
