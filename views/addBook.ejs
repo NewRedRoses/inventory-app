@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Add a book</h1>
+    <%- include("./partials/returnHomeBtn.ejs") %>
     <p>Fill in the form below to add a book</p>
     <form action="/add" method="post">
         <label>
@@ -22,8 +23,8 @@
                 <input type="text" name="last_name" placeholder="Herbert">
             </label>
         <label>
-             Date Published:
-            <input type="date" name="date_published" required>
+             Year Published:
+            <input type="number" name="year_published" required>
         </label>
         <label>
              Publisher:
@@ -33,10 +34,16 @@
              Edition:
             <input type="text" name="edition" placeholder="1st">
         </label>
-        <!-- could be nice to see about make this be a selection? -->
         <label>
              Genre:
-            <input type="text" name="genre" placeholder="Adventure">
+             <select name="genre" id="genre">
+                <option value="science-fiction">Science Fiction</option>
+                <option value="adventure">Adventure</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="comedy">Comedy</option>
+                <option value="romance">Romance</option>
+                <option value="philosophy">Philosophy</option>
+             </select>
         </label>
         <button type="submit">Add book!</button>
     </form>
