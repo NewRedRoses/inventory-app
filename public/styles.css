@@ -3,6 +3,17 @@
   color: #2f3640;
   background-color: #f5f6fa;
 }
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
+
+a:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -48,4 +59,8 @@ h1 {
 .book-title {
   font-weight: bold;
   width: 5ch;
+}
+li a {
+  text-decoration: none;
+  color: #2f3640;
 }
