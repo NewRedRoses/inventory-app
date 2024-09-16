@@ -1,5 +1,5 @@
 <ul class="book-list-container">
         <% listOfBooks.map((book) => { %>
-                <li class="book-list-item"> <span class="book-title"><%= book.title %></span> by <span class="book-author"><%= book.author_first_name + " " + book.author_last_name%></span>  </li>
+                <li class="book-list-item"> <a class="book-list-item" href="/books/<%-book.id %>"><span class="book-title"><%= book.title %></span> by <span class="book-author"><%= book.author_first_name + " " + book.author_last_name%></span> </a> </li>
          <% }) %>
 </ul>
