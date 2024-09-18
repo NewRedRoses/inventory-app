@@ -14,8 +14,8 @@ const PORT = 3000;
 const indexRouter = require("./routes/indexRouter");
 app.use("/", indexRouter);
 
-const addBookRouter = require("./routes/addBookRouter");
-app.use("/add", addBookRouter);
+const BookRouter = require("./routes/BookRouter");
+app.use("/book", BookRouter);
 
 const categoriesRouter = require("./routes/categoriesRouter");
 app.use("/categories", categoriesRouter);
