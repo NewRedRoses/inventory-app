@@ -12,8 +12,14 @@ async function addBookRouterPost(req, res) {
   await db.addBookToDB(req.body);
   res.redirect("/");
 }
+async function viewBookGet(req, res) {
+  const book = await db.getBookFromID(req.params.id);
+  res.render("viewBookPage", { book: book[0] });
+}
+
 module.exports = {
   indexRouterGet,
   addBookRouterGet,
   addBookRouterPost,
+  viewBookGet,
 };
