@@ -48,11 +48,17 @@ async function getBooksMatchingTitle(search_term) {
   const { rows } = await pool.query(query, values);
   return rows;
 }
-
+async function getBookFromID(id) {
+  const query = "SELECT * FROM books WHERE id = $1";
+  const values = [id];
+  const { rows } = await pool.query(query, values);
+  return rows;
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
   getAllCategories,
   getBooksMatchingGenre,
   getBooksMatchingTitle,
+  getBookFromID,
 };
