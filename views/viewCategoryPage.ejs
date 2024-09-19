@@ -13,11 +13,9 @@
     <ul class="genres-container">
         <% genres.forEach((item) =>{ %>
             <li>
-                 <button>
-                    <a href=<%=`/categories?genre=${item.genre}`%>>
+                <a href=<%=`/categories?genre=${item.genre}`%> class="nav">
                         <%= item.genre %>
-                    </a>
-                </button>
+                </a>
              </li>
         <%})%>
     </ul>
