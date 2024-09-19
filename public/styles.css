@@ -3,21 +3,11 @@
   color: #2f3640;
   background-color: #f5f6fa;
 }
-a:link {
-  text-decoration: inherit;
-  color: inherit;
-  cursor: auto;
-}
-
-a:visited {
-  text-decoration: inherit;
-  color: inherit;
-  cursor: auto;
-}
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
 }
 h1 {
   font-weight: 900;
@@ -63,4 +53,29 @@ h1 {
 li a {
   text-decoration: none;
   color: #2f3640;
+}
+a.nav {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 250px;
+  text-decoration: none;
+  font-weight: bold;
+  width: fit-content;
+  height: fit-content;
+  color: #f5f6fa;
+  background-color: #2f3640;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* Hover state */
+a.nav:hover {
+  background-color: #353b48; /* Slightly lighter to indicate interactivity */
+}
+/* Focus state */
+a.nav:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(47, 54, 64, 0.5); /* A subtle focus ring */
+}
+/* Active state (optional, but gives feedback when clicking) */
+a.nav:active {
+  background-color: #1f272e; /* Darker color on click */
 }
