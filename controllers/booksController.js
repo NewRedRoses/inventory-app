@@ -16,10 +16,15 @@ async function viewBookGet(req, res) {
   const book = await db.getBookFromID(req.params.id);
   res.render("viewBookPage", { book: book[0] });
 }
+async function deleteBookGet(req, res) {
+  await db.deleteBookByID(req.params.id);
+  res.redirect("/");
+}
 
 module.exports = {
   indexRouterGet,
   addBookRouterGet,
   addBookRouterPost,
   viewBookGet,
+  deleteBookGet,
 };
