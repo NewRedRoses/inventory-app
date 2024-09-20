@@ -54,6 +54,11 @@ async function getBookFromID(id) {
   const { rows } = await pool.query(query, values);
   return rows;
 }
+async function deleteBookByID(id) {
+  const query = "DELETE FROM books WHERE id = $1";
+  const values = [id];
+  await pool.query(query, values);
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -61,4 +66,5 @@ module.exports = {
   getBooksMatchingGenre,
   getBooksMatchingTitle,
   getBookFromID,
+  deleteBookByID,
 };
