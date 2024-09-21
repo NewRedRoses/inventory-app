@@ -10,17 +10,21 @@
     <h1>All categories</h1>
             <%- include("./partials/returnHomeBtn.ejs") %>
     <h2>All book genres</h2>
+<form action="categories/add" method="post">
+    <input type="text" placeholder="Add genre"> 
+    <button type="submit">Add</button>
+</form>
     <ul class="genres-container">
-        <% genres.forEach((item) =>{ %>
+        <% genres.forEach((genre) =>{ %>
             <li>
-                <a href=<%=`/categories?genre=${item.genre}`%> class="nav">
-                        <%= item.genre %>
+                <a href=<%=`/categories?genre=${genre.name}`%> class="nav">
+                        <%= genre.name %>
                 </a>
              </li>
         <%})%>
     </ul>
     <% if (searchedGenre) { %> 
-        <%- include("./partials/renderListOfBooks.ejs", {listOfBooks:  genreRows}) %>
+        <%- include("./partials/renderListOfBooks.ejs", {listOfBooks:  booksMatchingGenre}) %>
     <%}%>
 
 </body>

@@ -5,8 +5,9 @@ async function indexRouterGet(req, res) {
   res.render("index", { books: books });
 }
 
-function addBookRouterGet(req, res) {
-  res.render("addBookPage");
+async function addBookRouterGet(req, res) {
+  const genres = await db.getAllCategories();
+  res.render("addBookPage", { genres: genres });
 }
 async function addBookRouterPost(req, res) {
   await db.addBookToDB(req.body);
@@ -14,7 +15,8 @@ async function addBookRouterPost(req, res) {
 }
 async function viewBookGet(req, res) {
   const book = await db.getBookFromID(req.params.id);
-  res.render("viewBookPage", { book: book[0] });
+  const genre = await db.getGenreNameFromID(book[0].genre_id);
+  res.render("viewBookPage", { book: book[0], genre: genre });
 }
 async function deleteBookGet(req, res) {
   await db.deleteBookByID(req.params.id);

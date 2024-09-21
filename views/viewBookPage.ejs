@@ -12,7 +12,7 @@
     <div class="book-author"> <%= book.author_first_name + ' ' + book.author_last_name%> </div>
     <ul class="book-details-container">
         <li class="book-genre">Genre:
-                <a href="/categories?genre=<%-book.genre %>" class="nav"><%= book.genre %></a>
+                <a href="/categories?genre=<%=genre %>" class="nav"><%= genre %></a>
         </li>
         <li class="book-publish-year">Year: <%= book.year_published %></li>
         <li class="book-publisher">Publisher: <%= book.publisher %></li>

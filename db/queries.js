@@ -14,12 +14,15 @@ async function addBookToDB(book) {
     edition,
     genre,
   } = book;
+  const genreID = await pool.query("SELECT id FROM genres WHERE name = $1", [
+    genre,
+  ]);
 
   const bookTableQuery =
-    "INSERT INTO books (title,genre, publisher, year_published, edition, author_first_name, author_last_name) VALUES ($1,$2,$3,$4,$5,$6,$7)";
+    "INSERT INTO books (title,genre_id, publisher, year_published, edition, author_first_name, author_last_name) VALUES ($1,$2,$3,$4,$5,$6,$7)";
   const bookTableValues = [
     title,
-    genre.replaceAll(" ", ""),
+    genreID.rows[0].id,
     publisher,
     year_published,
     edition,
@@ -31,13 +34,14 @@ async function addBookToDB(book) {
 }
 
 async function getAllCategories() {
-  const text = "SELECT DISTINCT genre from books";
+  const text = "SELECT  name from genres";
   const { rows } = await pool.query(text);
   return rows;
 }
 
 async function getBooksMatchingGenre(genre) {
-  const query = "SELECT * FROM books WHERE genre =  $1";
+  const query =
+    "SELECT books.id, books.title, books.author_first_name, books.author_last_name FROM books INNER JOIN genres ON books.genre_id = genres.id WHERE genres.name = $1";
   const values = [genre];
   const { rows } = await pool.query(query, values);
   return rows;
@@ -59,6 +63,12 @@ async function deleteBookByID(id) {
   const values = [id];
   await pool.query(query, values);
 }
+async function getGenreNameFromID(id) {
+  const { rows } = await pool.query("SELECT name FROM genres WHERE id = $1", [
+    id,
+  ]);
+  return rows[0].name;
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -67,4 +77,5 @@ module.exports = {
   getBooksMatchingTitle,
   getBookFromID,
   deleteBookByID,
+  getGenreNameFromID,
 };

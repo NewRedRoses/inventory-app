@@ -36,15 +36,12 @@
             <input type="text" name="edition" placeholder="1st">
         </label>
         <label>
-             Genre:
-             <select name="genre" id="genre">
-                <option value="science-fiction">Science Fiction</option>
-                <option value="adventure">Adventure</option>
-                <option value="non-fiction">Non-Fiction</option>
-                <option value="comedy">Comedy</option>
-                <option value="romance">Romance</option>
-                <option value="philosophy">Philosophy</option>
-             </select>
+            Genre: 
+            <select name="genre" id="genre">
+        <% genres.map((genre) => { %>
+                <option value=<%= genre.name%>><%=genre.name %></option>
+        <% }) %>
+            </select>
         </label>
         <button type="submit">Add book!</button>
     </form>
