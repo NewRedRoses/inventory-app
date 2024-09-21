@@ -78,3 +78,6 @@ a.nav:focus {
 a.nav:active {
   background-color: #1f272e; /* Darker color on click */
 }
+a.nav.delete {
+  background-color: #e84118;
+}
