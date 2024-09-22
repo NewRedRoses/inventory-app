@@ -69,6 +69,11 @@ async function getGenreNameFromID(id) {
   ]);
   return rows[0].name;
 }
+async function addGenreToDB(genre) {
+  const query = "INSERT INTO genres (name) VALUES ($1)";
+  const values = [genre];
+  await pool.query(query, values);
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -78,4 +83,5 @@ module.exports = {
   getBookFromID,
   deleteBookByID,
   getGenreNameFromID,
+  addGenreToDB,
 };

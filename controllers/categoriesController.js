@@ -11,7 +11,8 @@ async function categoriesRouterGet(req, res) {
   });
 }
 async function addCategoryPost(req, res) {
-  res.send("test");
+  await db.addGenreToDB(req.body.genre_to_add);
+  res.redirect("back");
 }
 
 module.exports = {
