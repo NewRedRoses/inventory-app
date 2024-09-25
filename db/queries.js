@@ -34,7 +34,7 @@ async function addBookToDB(book) {
 }
 
 async function getAllCategories() {
-  const text = "SELECT  name from genres";
+  const text = "SELECT  id, name from genres";
   const { rows } = await pool.query(text);
   return rows;
 }
@@ -74,6 +74,24 @@ async function addGenreToDB(genre) {
   const values = [genre];
   await pool.query(query, values);
 }
+async function deleteGenreFromDB(genre) {
+  const getUnknownID = await pool.query(
+    "SELECT id FROM genres WHERE name = 'unknown' "
+  );
+  const unknownID = getUnknownID.rows[0].id;
+
+  const getGenreID = await pool.query("SELECT id FROM genres WHERE name = $1", [
+    genre,
+  ]);
+  const genreID = getGenreID.rows[0].id;
+
+  const query = "UPDATE books SET genre_id = $1 WHERE genre_id = $2";
+  const values = [unknownID, genreID];
+  await pool.query(query, values);
+
+  // Lastly delete the old genre
+  await pool.query("DELETE FROM genres WHERE name = $1", [genre]);
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -84,4 +102,5 @@ module.exports = {
   deleteBookByID,
   getGenreNameFromID,
   addGenreToDB,
+  deleteGenreFromDB,
 };
