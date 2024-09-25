@@ -24,7 +24,9 @@
         <%})%>
     </ul>
     <% if (searchedGenre) { %> 
-        <a href=<%= `/categories?genre=${searchedGenre}&delete=true` %>>delete btn</a>
+         <% if (searchedGenre != 'unknown' ) { %>
+          <a href=<%= `/categories?genre=${searchedGenre}&delete=true` %> class="nav delete">Delete genre</a>
+         <% } %>
         <%- include("./partials/renderListOfBooks.ejs", {listOfBooks:  booksMatchingGenre}) %>
     <%}%>
 
