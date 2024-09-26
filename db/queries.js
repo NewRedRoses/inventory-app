@@ -92,6 +92,43 @@ async function deleteGenreFromDB(genre) {
   // Lastly delete the old genre
   await pool.query("DELETE FROM genres WHERE name = $1", [genre]);
 }
+async function updateBookDetails(id, book) {
+  const {
+    title,
+    author_first_name,
+    author_last_name,
+    genre,
+    year_published,
+    edition,
+    publisher,
+  } = book;
+
+  const getGenreID = await pool.query("SELECT id FROM genres WHERE name = $1", [
+    genre,
+  ]);
+  const genreID = getGenreID.rows[0].id;
+
+  const query = `UPDATE books SET title = $1, 
+                                  author_first_name = $2,
+                                  author_last_name = $3,
+                                  genre_id = $4,
+                                  year_published = $5,
+                                  publisher = $6,
+                                  edition = $7
+                WHERE id = $8
+`;
+  const values = [
+    title,
+    author_first_name,
+    author_last_name,
+    parseInt(genreID),
+    parseInt(year_published),
+    publisher,
+    edition,
+    id,
+  ];
+  await pool.query(query, values);
+}
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -103,4 +140,5 @@ module.exports = {
   getGenreNameFromID,
   addGenreToDB,
   deleteGenreFromDB,
+  updateBookDetails,
 };

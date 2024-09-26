@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Editing <%= book.title %> by <%= `${book.author_first_name} ${book.author_last_name}` %> </title>
+</head>
+<body>
+    <h1>Updating <q><%= book.title %></q> </h1>
+    <div class="edit-instruct-msg">Modify the details of <%= book.title %> by <%= `${book.author_first_name} ${book.author_last_name}` %>.</div>
+    <form action="edit" method="post" class="update-book-form">
+        <label>
+            Title:
+            <input type="text" name="title" value=<%= book.title %>>
+        </label>
+        <label>
+            Author's first name:
+            <input type="text" name="author_first_name" value=<%= book.author_first_name%> >
+        </label>
+        <label>
+            Author's last name:
+            <input type="text" name="author_last_name" value=<%= book.author_last_name%>>
+        </label>
+        <label>
+            Genre: 
+            <select name="genre" id="genre">
+        <% genres.map((genre) => { %>
+            <% if (genre.name === currentGenre) { %>
+                <option value=<%= genre.name%> selected > <%= genre.name %></option>
+            <% } %>
+                <option value=<%= genre.name%>><%= genre.name %></option>
+        <% }) %>
+            </select>
+        </label>
+        <label>
+            Year published:
+            <input type="number" name="year_published" value=<%= book.year_published %>>
+        </label>
+        <label>
+            Publisher:
+            <input type="text" name="publisher"  value=<%= book.publisher %>>
+        </label>
+        <label>
+            Edition:
+            <input type="text" name="edition" value=<%= book.edition %>>
+        </label>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

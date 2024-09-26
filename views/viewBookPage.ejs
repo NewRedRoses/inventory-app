@@ -9,15 +9,18 @@
 </head>
 <body>
     <h1 class="book-title"><%= book.title %></h1>
-    <div class="book-author"> <%= book.author_first_name + ' ' + book.author_last_name%> </div>
+    <div class="book-author">By <%= book.author_first_name + ' ' + book.author_last_name%> </div>
     <ul class="book-details-container">
-        <li class="book-genre">Genre:
+        <li class="book-genre"><b>Genre</b>:
                 <a href="/categories?genre=<%=genre %>" class="nav"><%= genre %></a>
         </li>
-        <li class="book-publish-year">Year: <%= book.year_published %></li>
-        <li class="book-publisher">Publisher: <%= book.publisher %></li>
-        <li class="book-edition">Edition: <%= book.edition %></li>
+        <li class="book-publish-year"><b>Year</b>: <%= book.year_published %></li>
+        <li class="book-publisher"><b>Publisher</b>: <%= book.publisher %></li>
+        <li class="book-edition"><b>Edition:</b> <%= book.edition %></li>
     </ul>
-    <a href="delete" class="nav delete" >Delete Book!</a>
+    <div class="action-btns">
+        <a href="delete" class="nav delete" >Delete Book!</a>
+        <a href="edit" class="nav">Edit Book!</a>
+    </div>
 </body>
 </html>
