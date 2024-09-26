@@ -7,6 +7,7 @@
     <title>Editing <%= book.title %> by <%= `${book.author_first_name} ${book.author_last_name}` %> </title>
 </head>
 <body>
+    <a href="view" class="nav">Close</a>
     <h1>Updating <q><%= book.title %></q> </h1>
     <div class="edit-instruct-msg">Modify the details of <%= book.title %> by <%= `${book.author_first_name} ${book.author_last_name}` %>.</div>
     <form action="edit" method="post" class="update-book-form">
