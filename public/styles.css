@@ -19,6 +19,9 @@ h1 {
 .genres-container {
   list-style-type: none; /* Remove bullets */
   display: flex;
+  flex-wrap: wrap;
+  padding-left: 0px;
+  justify-content: center;
   gap: 10px;
 }
 .divider::after {
@@ -56,7 +59,7 @@ li a {
 a.nav {
   display: inline-block;
   padding: 5px 10px;
-  border-radius: 250px;
+  border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   width: fit-content;
@@ -80,4 +83,13 @@ a.nav:active {
 }
 a.nav.delete {
   background-color: #e84118;
+}
+.update-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.edit-instruct-msg {
+  border-bottom: 1px solid #353b48;
+  padding-bottom: 10px;
 }
