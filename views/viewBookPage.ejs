@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
 
-    <title><%= book.title %> by <%= book.author_first_name + ' ' + book.author_last_name%> </title>
+    <title><%= book.title %> by <%= `${book.author_first_name} ${book.author_last_name}`%> </title>
 </head>
 <body>
-    <h1 class="book-title"><%= book.title %></h1>
-    <div class="book-author">By <%= book.author_first_name + ' ' + book.author_last_name%> </div>
+
+    <h1 class="book-header">
+        <span class="book-title"><%= book.title %></span> by
+        <span class="book-author"><%= `${book.author_first_name} ${book.author_last_name}`%> </span>
+    </h1>
+        <%- include("./partials/returnHomeBtn.ejs", {msg: 'Go back'}) %>
     <ul class="book-details-container">
         <li class="book-genre"><b>Genre</b>:
                 <a href="/categories?genre=<%=genre %>" class="nav"><%= genre %></a>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Add a book</h1>
-    <%- include("./partials/returnHomeBtn.ejs") %>
+    <%- include("./partials/returnHomeBtn.ejs", {msg: 'Go back'}) %>
     <p>Fill in the form below to add a book</p>
     <form action="/book/add" method="post" class="add-book-container">
         <label>
