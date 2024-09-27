@@ -14,6 +14,12 @@ async function categoriesRouterGet(req, res) {
     booksMatchingGenre: bookMatchingGenre,
   });
 }
+async function categoriesRouterPost(req, res) {
+  const newName = req.body.updatedGenreName;
+  const oldName = req.query.genre;
+  await db.updateGenre(newName, oldName);
+  res.redirect("/categories");
+}
 async function addCategoryPost(req, res) {
   await db.addGenreToDB(req.body.genre_to_add);
   res.redirect("back");
@@ -21,5 +27,6 @@ async function addCategoryPost(req, res) {
 
 module.exports = {
   categoriesRouterGet,
+  categoriesRouterPost,
   addCategoryPost,
 };

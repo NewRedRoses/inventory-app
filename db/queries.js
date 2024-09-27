@@ -129,6 +129,12 @@ async function updateBookDetails(id, book) {
   ];
   await pool.query(query, values);
 }
+async function updateGenre(newName, currentName) {
+  const query = "UPDATE genres SET name = $1 WHERE name = $2";
+  const values = [newName, currentName];
+  await pool.query(query, values);
+}
+
 module.exports = {
   getAllBooks,
   addBookToDB,
@@ -141,4 +147,5 @@ module.exports = {
   addGenreToDB,
   deleteGenreFromDB,
   updateBookDetails,
+  updateGenre,
 };

@@ -26,6 +26,13 @@
     <% if (searchedGenre) { %> 
          <% if (searchedGenre != 'unknown' ) { %>
           <a href=<%= `/categories?genre=${searchedGenre}&delete=true` %> class="nav delete">Delete genre</a>
+          <form action="" method="post" >
+            <label for="">
+                Rename
+                <input type="text" name="updatedGenreName" value=<%= searchedGenre %>>
+            </label>
+            <button type="submit">Save</button>
+          </form>
          <% } %>
         <%- include("./partials/renderListOfBooks.ejs", {listOfBooks:  booksMatchingGenre}) %>
     <%}%>
