@@ -14,14 +14,22 @@
         <span class="book-author"><%= `${book.author_first_name} ${book.author_last_name}`%> </span>
     </h1>
         <%- include("./partials/returnHomeBtn.ejs", {msg: 'Go back'}) %>
-    <ul class="book-details-container">
-        <li class="book-genre"><b>Genre</b>:
+    <table class="book-table">
+        <tr class="book-table-headers">
+            <th class="book-table-header">Genre</th>
+            <th class="book-table-header">Published Year</th>
+            <th class="book-table-header">Publisher</th>
+            <th class="book-table-header">Edition</th>
+        </tr>
+        <tr class="book-table-rows">
+            <td class="book-table-value">
                 <a href="/categories?genre=<%=genre %>" class="nav"><%= genre %></a>
-        </li>
-        <li class="book-publish-year"><b>Year</b>: <%= book.year_published %></li>
-        <li class="book-publisher"><b>Publisher</b>: <%= book.publisher %></li>
-        <li class="book-edition"><b>Edition:</b> <%= book.edition %></li>
-    </ul>
+            </td>
+            <td class="book-table-value"><%= book.year_published %></td>
+            <td class="book-table-value"><%= book.publisher %></td>
+            <td class="book-table-value"><%= book.edition %></td>
+        </tr>
+    </table>
     <div class="action-btns">
         <a href="delete" class="nav delete" >Delete Book!</a>
         <a href="edit" class="nav">Edit Book!</a>

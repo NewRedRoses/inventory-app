@@ -93,3 +93,18 @@ a.nav.delete {
   border-bottom: 1px solid #353b48;
   padding-bottom: 10px;
 }
+.book-table {
+  font-size: 1.1em;
+  border: 1px solid #b9c0c9;
+  margin: 5px 10px;
+}
+.book-table-headers {
+  background-color: #dcdde1;
+  color: #353b48;
+}
+.book-table-header {
+  padding: 10px;
+}
+.book-table-value {
+  text-align: center;
+}
