@@ -34,14 +34,9 @@ VALUES  ('Dune', 1, 'Chilton', 1963, '1st', 'Frank', 'Herbert'),
                   ('The Paradox of Choice: Why More Is Less', 6, 'Ecco press', 2004, '1st', 'Barry', 'Schwartz')`;
 
 async function main() {
-  const { DB_HOST, DB_USER, DB, DB_PWD, DB_PORT } = process.env;
   console.log("Seeding....");
   const client = new Client({
-    user: DB_USER,
-    password: DB_PWD,
-    host: DB_HOST,
-    port: DB_PORT,
-    database: DB,
+    connectionString: process.env.PROD_DB_URL,
   });
   await client.connect();
   await client.query(createBookTableQuery);
